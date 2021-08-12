@@ -1,7 +1,9 @@
 
 function App() {
   return (
-    null
+    <>
+      <h1>Hello GraphQL</h1>
+    </>
   );
 }
 
