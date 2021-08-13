@@ -4,6 +4,7 @@ import {DefaultState, SearchInput} from "./components/SearchInput";
 function App() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setDisplaySearch(false)
     setQuery({
       ...DEFAULT_STATE,
       query: event.target.value
@@ -15,22 +16,26 @@ function App() {
     after: null,
     last: null,
     before: null,
-    query: "フロントエンドエンジニア"
+    query: ""
   }
-  const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE)
+  const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
+  const [ displaySearch, setDisplaySearch ] = useState<boolean>(false);
 
   return (
-    <>
+    <React.Fragment>
       <h1>グラフキューエルのリポジトリ検索アプリ</h1>
       <input value={query} onChange={handleChange}/>
-      <SearchInput
-        first={first}
-        query={query}
-        last={last}
-        before={before}
-        after={after}
-      />
-    </>
+      <button onClick={() => setDisplaySearch(!displaySearch)}>検索</button>
+      { displaySearch &&
+        <SearchInput
+          first={first}
+          query={query}
+          last={last}
+          before={before}
+          after={after}
+        />
+      }
+    </React.Fragment>
   )
 }
 
