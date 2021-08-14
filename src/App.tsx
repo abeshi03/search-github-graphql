@@ -10,7 +10,7 @@ function App() {
     });
   }
 
-  const PER_PAGE = 5
+  const PER_PAGE = 20
   const DEFAULT_STATE = {
     first: PER_PAGE,
     after: null,
@@ -21,7 +21,7 @@ function App() {
   const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
 
   return (
-    <React.Fragment>
+    <div className={"container"}>
       <h1>グラフキューエルのリポジトリ検索アプリ</h1>
       <input value={query} onChange={handleChange}/>
       <SearchInput
@@ -31,7 +31,7 @@ function App() {
         before={before}
         after={after}
       />
-    </React.Fragment>
+    </div>
   )
 }
 

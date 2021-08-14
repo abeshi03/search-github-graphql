@@ -11,23 +11,38 @@ export type DefaultState = {
 }
 
 export const SearchInput: VFC<DefaultState> = memo((props) => {
+
+  // - props ===========================================================================================================
   const { query, first, last, before, after } = props;
 
+  // - カスタムフック =====================================================================================================
   const { loading, error, data } = useQuery(SEARCH_REPOSITORIES, {
     variables: { query, first, last, before, after }
   })
+
+  // - ローディング ======================================================================================================
   if (loading) return <p>Loading...</p>;
+
+  // - エラー ===========================================================================================================
   if (error) return <p>Error :(</p>;
-  console.log(data)
+
+  const search = data.search;
+
+  // - jsx =============================================================================================================
   return (
     <>
-      {data.search.edges.map((edge: any) => {
-        return (
-          <li key={edge.node.id}>
-            <a href={edge.node.url} target="_blank" rel="noopener noreferrer">{edge.node.name}</a>
-          </li>
-        )
-      })}
+      <ul>
+        {
+          search.edges.map((edge: any) => {
+            const node = edge.node;
+            return (
+              <li key={node.id}>
+                <a href={node.url} target="_blank" rel="noopener noreferrer">{node.name}</a>
+              </li>
+            )
+          })
+        }
+      </ul>
     </>
   );
-});
+})
