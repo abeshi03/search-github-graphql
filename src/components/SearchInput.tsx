@@ -3,7 +3,7 @@ import {useQuery} from "@apollo/client";
 import {SEARCH_REPOSITORIES} from "../query/query";
 
 export type DefaultState = {
-  first?: number;
+  first?: number | null;
   after?: number | null;
   last?: number | null;
   before?: number | null;
@@ -45,4 +45,4 @@ export const SearchInput: VFC<DefaultState> = memo((props) => {
       </ul>
     </>
   );
-})
+});

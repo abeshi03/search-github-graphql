@@ -11,6 +11,7 @@ function App() {
   }
 
   const PER_PAGE = 20
+
   const DEFAULT_STATE = {
     first: PER_PAGE,
     after: null,
@@ -31,6 +32,7 @@ function App() {
         before={before}
         after={after}
       />
+
     </div>
   )
 }
