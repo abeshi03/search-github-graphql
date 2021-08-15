@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, ReactNode, useState, VFC} from "react";
 import {DefaultState} from "../components/SearchInput";
 
 export const SearchGithubQueryContext = createContext({})
@@ -13,9 +13,13 @@ export const DEFAULT_STATE = {
   query: ""
 }
 
-export const SearchGithubQueryProvider = (props: any) => {
+type Props = {
+  children: ReactNode
+}
+
+export const SearchGithubQueryProvider: VFC<Props> = (props) => {
   const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
-  const { children } = props;
+  const {children} = props;
 
   return (
     <SearchGithubQueryContext.Provider value={{query, first, last, before, after, setQuery}}>
