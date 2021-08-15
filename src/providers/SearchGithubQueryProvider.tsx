@@ -1,7 +1,11 @@
-import React, {createContext, ReactNode, useState, VFC} from "react";
+import React, {createContext, Dispatch, ReactNode, SetStateAction, useState, VFC} from "react";
 import {DefaultState} from "../components/SearchInput";
 
-export const SearchGithubQueryContext = createContext({})
+export type ContextType = {
+  setQuery: Dispatch<SetStateAction<DefaultState>>;
+} & DefaultState;
+
+export const SearchGithubQueryContext = createContext<ContextType>({} as ContextType)
 
 export const PER_PAGE = 20
 

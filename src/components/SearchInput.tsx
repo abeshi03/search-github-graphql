@@ -7,7 +7,7 @@ import {Pagination} from "./Pagination";
 
 export type DefaultState = {
   first?: number | null;
-  after?: number | null;
+  after?: string | null;
   last?: number | null;
   before?: number | null;
   query?: string | undefined;

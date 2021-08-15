@@ -8,10 +8,9 @@ type PaginationProps = {
   endCursor: string;
 }
 
-
 export const Pagination: VFC<PaginationProps> = memo((props) => {
   const { prevPage, nextPage, endCursor } = props;
-  const { setQuery, query } = useContext<any>(SearchGithubQueryContext);
+  const { setQuery, query } = useContext(SearchGithubQueryContext);
 
   const onClickNextPage = (): void => {
     setQuery({
@@ -32,6 +31,7 @@ export const Pagination: VFC<PaginationProps> = memo((props) => {
       query: query
     })
   }
+  console.log(endCursor)
 
   return (
     <>
