@@ -22,11 +22,22 @@ export const Pagination: VFC<PaginationProps> = memo((props) => {
       query: query
     })
   }
+
+  const onClickPrevPage = (): void => {
+    setQuery({
+      first: PER_PAGE,
+      after: null,
+      last: null,
+      before: null,
+      query: query
+    })
+  }
+
   return (
     <>
       { prevPage === true
       &&
-      <button>前のページ</button>
+      <button onClick={onClickPrevPage}>前のページ</button>
       }
 
       { nextPage === true
