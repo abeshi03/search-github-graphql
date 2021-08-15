@@ -1,6 +1,8 @@
 import React, {memo, VFC} from "react";
 import {useQuery} from "@apollo/client";
 import {SEARCH_REPOSITORIES} from "../query/query";
+import {Search } from "../type/github/SearchGithub";
+import {Node} from "../type/github/SearchGithub";
 
 export type DefaultState = {
   first?: number | null;
@@ -26,15 +28,15 @@ export const SearchInput: VFC<DefaultState> = memo((props) => {
   // - エラー ===========================================================================================================
   if (error) return <p>Error :(</p>;
 
-  const search = data.search;
+  const search: Search = data.search;
 
   // - jsx =============================================================================================================
   return (
     <>
       <ul>
         {
-          search.edges.map((edge: any) => {
-            const node = edge.node;
+          search.edges.map((edge) => {
+            const node: Node = edge.node;
             return (
               <li key={node.id}>
                 <a href={node.url} target="_blank" rel="noopener noreferrer">{node.name}</a>
@@ -46,3 +48,7 @@ export const SearchInput: VFC<DefaultState> = memo((props) => {
     </>
   );
 });
+
+
+
+
