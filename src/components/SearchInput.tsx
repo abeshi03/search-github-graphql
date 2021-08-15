@@ -3,6 +3,7 @@ import {useQuery} from "@apollo/client";
 import {SEARCH_REPOSITORIES} from "../query/query";
 import {Search } from "../type/github/SearchGithub";
 import {Node} from "../type/github/SearchGithub";
+import {Pagination} from "./Pagination";
 
 export type DefaultState = {
   first?: number | null;
@@ -46,6 +47,11 @@ export const SearchInput: VFC<DefaultState> = memo((props) => {
           })
         }
       </ul>
+      <Pagination
+        prevPage={search.pageInfo.hasPreviousPage}
+        nextPage={search.pageInfo.hasNextPage}
+        endCursor={search.pageInfo.endCursor}
+      />
     </>
   );
 });

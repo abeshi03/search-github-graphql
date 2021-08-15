@@ -11,18 +11,8 @@ function App() {
     });
   }
 
-  const { query, first, last, before, after, setQuery } = useContext<any>(SearchGithubQueryContext);
 
-  // const PER_PAGE = 20
-  //
-  // const DEFAULT_STATE = {
-  //   first: PER_PAGE,
-  //   after: null,
-  //   last: null,
-  //   before: null,
-  //   query: ""
-  // }
-  // const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
+  const { query, first, last, before, after, setQuery } = useContext<any>(SearchGithubQueryContext);
 
   return (
     <div className={"container"}>

@@ -3,7 +3,7 @@ import {DefaultState} from "../components/SearchInput";
 
 export const SearchGithubQueryContext = createContext({})
 
-const PER_PAGE = 20
+export const PER_PAGE = 20
 
 export const DEFAULT_STATE = {
   first: PER_PAGE,

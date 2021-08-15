@@ -1,16 +1,27 @@
-import React, {memo, VFC} from "react";
+import React, {memo, useContext, VFC} from "react";
+import {DEFAULT_STATE, PER_PAGE, SearchGithubQueryContext} from "../providers/SearchGithubQueryProvider";
+
 
 type PaginationProps = {
-  query?: string;
   prevPage: boolean;
   nextPage: boolean;
-  PrevPage: () => void;
-  NextPage: () => void;
+  endCursor: string;
 }
 
 
 export const Pagination: VFC<PaginationProps> = memo((props) => {
-  const { query, prevPage, nextPage } = props;
+  const { prevPage, nextPage, endCursor } = props;
+  const { setQuery, query } = useContext<any>(SearchGithubQueryContext);
+
+  const onClickNextPage = (): void => {
+    setQuery({
+      first: PER_PAGE,
+      after: endCursor,
+      last: null,
+      before: null,
+      query: query
+    })
+  }
   return (
     <>
       { prevPage === true
@@ -20,7 +31,7 @@ export const Pagination: VFC<PaginationProps> = memo((props) => {
 
       { nextPage === true
       &&
-      <button>次のページ</button>
+      <button onClick={onClickNextPage}>次のページ</button>
       }
     </>
   );
