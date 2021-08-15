@@ -1,5 +1,5 @@
 import React, {memo, useContext, VFC} from "react";
-import {DEFAULT_STATE, PER_PAGE, SearchGithubQueryContext} from "../providers/SearchGithubQueryProvider";
+import {PER_PAGE, SearchGithubQueryContext} from "../providers/SearchGithubQueryProvider";
 
 
 type PaginationProps = {
