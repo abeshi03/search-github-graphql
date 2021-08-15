@@ -5,11 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import "./styles/importOnly.scss";
 import client from "./client";
 import {ApolloProvider} from "@apollo/client";
+import {SearchGithubQueryProvider} from "./providers/SearchGithubQueryProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <SearchGithubQueryProvider>
+        <App />
+      </SearchGithubQueryProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {DefaultState, SearchInput} from "./components/SearchInput";
+import React, {useContext} from "react";
+import {SearchInput} from "./components/SearchInput";
+import {DEFAULT_STATE, SearchGithubQueryContext} from "./providers/SearchGithubQueryProvider";
 
 function App() {
 
@@ -10,16 +11,18 @@ function App() {
     });
   }
 
-  const PER_PAGE = 20
+  const { query, first, last, before, after, setQuery } = useContext<any>(SearchGithubQueryContext);
 
-  const DEFAULT_STATE = {
-    first: PER_PAGE,
-    after: null,
-    last: null,
-    before: null,
-    query: ""
-  }
-  const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
+  // const PER_PAGE = 20
+  //
+  // const DEFAULT_STATE = {
+  //   first: PER_PAGE,
+  //   after: null,
+  //   last: null,
+  //   before: null,
+  //   query: ""
+  // }
+  // const [{ query, first, last, before, after }, setQuery] = useState<DefaultState>(DEFAULT_STATE);
 
   return (
     <div className={"container"}>
@@ -32,7 +35,6 @@ function App() {
         before={before}
         after={after}
       />
-
     </div>
   )
 }
