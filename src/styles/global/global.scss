@@ -4,3 +4,24 @@
   margin-right: auto;
   margin-top: 40px;
 }
+
+
+@mixin LoadingPlaceholder(
+  $width: null,
+  $height: null,
+  $borderRadius: null,
+  $underlayColor: #E1E7EB,
+  $wavePrimaryColor: lighten(#E1E7EB, 30%),
+  $waveSecondaryColor: lighten(#E1E7EB, 20%),
+  $useAbsolutePositioning: false
+) {
+
+  @keyframes LoadingPlaceholderAnimation {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
