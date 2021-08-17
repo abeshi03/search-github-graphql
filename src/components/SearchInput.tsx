@@ -24,7 +24,14 @@ export const SearchInput: VFC<DefaultState> = memo((props) => {
   })
 
   // - ローディング ======================================================================================================
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (
+    <>
+      <div className={"loading"}></div>
+      <div className={"loading-1"}></div>
+      <div className={"loading-2"}></div>
+      <div className={"loading-3"}></div>
+    </>
+  );
 
   // - エラー ===========================================================================================================
   if (error) return <p>Error :(</p>;

@@ -46,3 +46,18 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+.loading {
+  @include LoadingPlaceholder(
+    $width: 200px,
+    $height: 30px,
+    $borderRadius: 5px
+  )
+}
+.loading-2 {
+  @include LoadingPlaceholder(
+    $width: 300px,
+    $height: 20px,
+    $borderRadius: 5px
+  )
+}

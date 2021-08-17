@@ -24,4 +24,42 @@
       transform: translateX(100%);
     }
   }
+
+  width: $width;
+  height: $height;
+  border-radius: $borderRadius;
+
+  background: $underlayColor;
+  overflow: hidden;
+
+  @if $useAbsolutePositioning {
+    position: relative;
+  }
+
+  &:before {
+    display: block;
+    content: "";
+
+    height: 100%;
+
+    background: linear-gradient(
+      to right, transparent 0%, $waveSecondaryColor 30%, $wavePrimaryColor 50%, $waveSecondaryColor 70%, transparent 100%
+    );
+
+    transform: translateX(-100%);
+
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: LoadingPlaceholderAnimation;
+    animation-timing-function: ease;
+
+    @if $useAbsolutePositioning {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+  }
+
 }
